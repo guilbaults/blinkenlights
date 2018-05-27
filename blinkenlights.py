@@ -67,7 +67,6 @@ LED and power status in a JBOD. \
 This tool can accept drive path in 2 format: \
 /dev/mapper/jbod00-bay00 or /dev/sdx')
     parser.add_argument('path')
-    #parser.add_argument('--verbose', help='increase output verbosity')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--rtr', help='set a drive in ready-to-remove state',
                        action='store_true')
