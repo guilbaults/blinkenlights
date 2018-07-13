@@ -1,6 +1,6 @@
 Name:	  blinkenlights	
-Version:  0.0.1
-%global gittag 0.0.1
+Version:  0.0.2
+%global gittag 0.0.2
 Release:  1%{?dist}
 Summary:  Script to manage LED and power in Xyratex 5U84 slots JBOD	
 
@@ -30,7 +30,8 @@ to control the LED/power with a sg_ses command.
 %install
 mkdir -p %{buildroot}/%{_bindir}
 
-install -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+sed -i -e '1i#!/usr/bin/python3' blinkenlights.py
+install -m 0755 %{name}.py %{buildroot}/%{_bindir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -39,6 +40,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
+* Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.2-1
+- Adding the shebang in the spec file for the python script
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.1-1
 - Initial release, supporting Xyratex 84 slots JBOD
 
