@@ -1,5 +1,6 @@
 Name:	  blinkenlights	
 Version:  0.0.1
+%global gittag 0.0.1
 Release:  1%{?dist}
 Summary:  Script to manage LED and power in Xyratex 5U84 slots JBOD	
 
@@ -25,15 +26,17 @@ to control the LED/power with a sg_ses command.
 %setup -q
 
 %build
-%py3_build
 
 %install
-%py3_install
+mkdir -p %{buildroot}/%{_bindir}
+
+install -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
-%{_bindir}/blinkenlights
-%doc
-%license LICENSE
+%{_bindir}/%{name}
 
 %changelog
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.1-1
