@@ -1,4 +1,4 @@
-# Blinklights
+# Blinkenlights
 This tool is used to control the LEDs and slot power in a Xyratex 84 and 106 slots JBODs, also know as:
 
 * Seagate/Xyratex SP-2584
