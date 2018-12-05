@@ -41,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
-* Wed  5 Dec 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.3-1
+* Wed Dec 5 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.3-1
 - Removing debugging print and supporting SP-34106
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.2-1
 - Adding the shebang in the spec file for the python script
