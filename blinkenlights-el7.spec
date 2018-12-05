@@ -1,8 +1,8 @@
 Name:	  blinkenlights	
-Version:  0.0.2
-%global gittag 0.0.2
+Version:  0.0.3
+%global gittag 0.0.3
 Release:  1%{?dist}
-Summary:  Script to manage LED and power in Xyratex 5U84 slots JBOD	
+Summary:  Script to manage LED and power in Xyratex 5U84 and 4U106 slots JBOD
 
 License:  Apache License 2.0
 URL:      https://github.com/guilbaults/blinkenlights
@@ -18,6 +18,7 @@ This tool is used to control the LEDs and slot power in a Xyratex 84 slots JBODs
 * Seagate/Xyratex SP-2584
 * Dell MD1280
 * Lenovo D3284
+* Seagate Exos E 4U106 (SP-34106)
 This script can be adapted for other types of JBODs, as long as its possible
 to control the LED/power with a sg_ses command.
 
@@ -40,6 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
+* Wed  5 Dec 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.3-1
+- Removing debugging print and supporting SP-34106
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.2-1
 - Adding the shebang in the spec file for the python script
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.1-1

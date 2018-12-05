@@ -1,14 +1,15 @@
 # Blinklights
-This tool is used to control the LEDs and slot power in a Xyratex 84 slots JBODs, also know as:
+This tool is used to control the LEDs and slot power in a Xyratex 84 and 106 slots JBODs, also know as:
 
 * Seagate/Xyratex SP-2584
 * Dell MD1280
 * Lenovo D3284
+* Seagate Exos E 4U106 (SP-34106)
 
 This script can be adapted for other types of JBODs, as long as its possible to control the LED/power with a `sg_ses` command. 
 
 ## Requirements
-* [sasutils (fork for Xyratex 84 slots JBOD)](https://github.com/guilbaults/sasutils) based on [sasutils from Stanford](https://github.com/stanford-rc/sasutils)
+* [sasutils (fork for Xyratex 84/106 slots JBOD)](https://github.com/guilbaults/sasutils) based on [sasutils from Stanford](https://github.com/stanford-rc/sasutils)
 * `sg_ses`
 
 ## Usage

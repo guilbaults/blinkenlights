@@ -29,12 +29,9 @@ def jbod_action(sg_dev, slot, action_flag):
     index_str = '--index=%i' % slot
     cmdargs = ['sg_ses', '--page=0x02', index_str, action_flag,
                '/dev/' + sg_dev]
-    print(cmdargs)
     stdout, stderr = subprocess.Popen(cmdargs,
                                       stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE).communicate()
-    print(stdout)
-    print(stderr)
     # TODO confirm state instead of sleeping
     time.sleep(1)
 
