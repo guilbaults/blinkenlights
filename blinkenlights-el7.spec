@@ -1,6 +1,6 @@
 Name:	  blinkenlights	
-Version:  0.0.3
-%global gittag 0.0.3
+Version:  0.0.4
+%global gittag 0.0.4
 Release:  1%{?dist}
 Summary:  Script to manage LED and power in Xyratex 5U84 and 4U106 slots JBOD
 
@@ -41,6 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
+* Tue Jul 16 2019 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.4-1
+- Support slots above 99 in the 106 slots JBOD
 * Wed Dec 5 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.3-1
 - Removing debugging print and supporting SP-34106
 * Fri Jul 13 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.2-1

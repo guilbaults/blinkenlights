@@ -42,18 +42,18 @@ def blinkenlight(jbodid, slot, args):
         # Ready-to-remove will poweroff the drive and turn on the fault LED
         jbod_action(sg_dev, slot, '--set=devoff')
         jbod_action(sg_dev, slot, '--set=fault')
-        print('Ready-to-remove jbod%02d-bay%02d' % (jbodid, slot))
+        print('Ready-to-remove jbod%02d-bay%d' % (jbodid, slot))
     elif(args.insert):
         # Incase a new drive insertion does not spinup or clear the fault LED
         jbod_action(sg_dev, slot, '--clear=devoff')
         jbod_action(sg_dev, slot, '--clear=fault')
-        print('Inserting jbod%02d-bay%02d' % (jbodid, slot))
+        print('Inserting jbod%02d-bay%d' % (jbodid, slot))
     elif(args.locate_on):
         jbod_action(sg_dev, slot, '--set=locate')
-        print('Turning on LED on jbod%02d-bay%02d' % (jbodid, slot))
+        print('Turning on LED on jbod%02d-bay%d' % (jbodid, slot))
     elif(args.locate_off):
         jbod_action(sg_dev, slot, '--clear=locate')
-        print('Turning off LED on jbod%02d-bay%02d' % (jbodid, slot))
+        print('Turning off LED on jbod%02d-bay%d' % (jbodid, slot))
     else:
         return
 
@@ -76,13 +76,13 @@ This tool can accept drive path in 2 format: \
 
     args = parser.parse_args()
     device_match = re.match('^/dev/(sd[a-z]+)$', args.path)
-    jbod_match = re.match('^/dev/mapper/jbod([0-9]{2})-bay([0-9]{2})$',
+    jbod_match = re.match('^/dev/mapper/jbod([0-9]{2})-bay([0-9]{2,3})$',
                           args.path)
 
     if(device_match):
         dev = device_match.group(1)
         position = device_to_position(dev)
-        print('Disk is in position jbod%02d-bay%02d' % (position))
+        print('Disk is in position jbod%02d-bay%d' % (position))
         blinkenlight(position[0], position[1], args)
     elif(jbod_match):
         jbodid = int(jbod_match.group(1))
