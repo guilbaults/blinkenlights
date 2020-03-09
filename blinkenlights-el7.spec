@@ -1,6 +1,6 @@
 Name:	  blinkenlights	
-Version:  0.0.4
-%global gittag 0.0.4
+Version:  0.0.5
+%global gittag 0.0.5
 Release:  1%{?dist}
 Summary:  Script to manage LED and power in Xyratex 5U84 and 4U106 slots JBOD
 
@@ -31,7 +31,7 @@ to control the LED/power with a sg_ses command.
 %install
 mkdir -p %{buildroot}/%{_bindir}
 
-sed -i -e '1i#!/usr/bin/python3' blinkenlights.py
+sed -i -e '1i#!/usr/bin/python3.4' blinkenlights.py
 install -m 0755 %{name}.py %{buildroot}/%{_bindir}/%{name}
 
 %clean
@@ -41,6 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
+* Mon 9 Mar 2020 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.5-1
+- Using python 3.4 due to a dependency on sasutil
 * Tue Jul 16 2019 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.4-1
 - Support slots above 99 in the 106 slots JBOD
 * Wed Dec 5 2018 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.3-1
