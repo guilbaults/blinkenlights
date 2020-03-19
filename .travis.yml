@@ -1,11 +1,30 @@
 language: python
-sudo: false
+sudo: required
 cache: pip
 python:
 - '3.5'
 fail_fast: true
+env:
+  global:
+  - DOCKER_IMAGE=alectolytic/rpmbuilder
+  - OS_ARCH=x86_64
+  matrix:
+  - OS_TYPE=centos OS_DIST=epel OS_VERSION=7
+services:
+- docker
 before_install:
-    - pip install pycodestyle
-install: "pip install -r requirements.txt"
+- pip install flake8
+install: pip install -r requirements.txt
 script:
-    - pycodestyle blinkenlights.py
+- flake8 blinkenlights.py
+- docker run -v ${PWD}:/sources -v ${PWD}:/output:Z ${DOCKER_IMAGE}:${OS_TYPE}-${OS_VERSION}
+deploy:
+  provider: releases
+  api_key:
+    secure: g9dZ7EEeKvN4hQLvV9ipHRWTKQ4mgNl5yQ2lLwlaEpmyHSg19gnIlAlPIhNrHrAiLMPqrDx0ZfZ4/vIv0RWTK4FHP2w0t0ayL06KzdJlAzaA3mLGQTrQ9JMUhRW7RLaL8uTmNSQMGEs0ViXCAGgQJovqWT2PAoVi4WN9xPCpgV+TPkt5jrlCzYVLSTJHGdtokqrreLJE87Dop9l1KltYBo7nUQ6neRUeMd9xaCm4LuBYuRkcNv1b0BsY1FO6mVEiFzXD29HhoVtkUPyVXNVJkMPIuVXR2BNeBL3jOCuAxn/5LKAAK2AtM2E0aKTwxsAp+QfGP2F3EW2vpawwLC3S6Sqmp4+qCQkb8y66oxexndabnJ5tjO48BscGrAOBa0qVzIhFVwEKJsI49Pdev664cmytGM6r1bmxKN354Uka77N9OqBg9UNhJR0IQntpL/4M/xlz426OWGqYuUoO0/uwb55JS7jY5tzTz+a2g4/UMIjDN0QtO+CMBlcTAYCUzYgskYD2+GRyWjmI8SUXOurP5SLgRrtFFJUVS/U6wlwPLflgZs8ztPn9rk73iZvFYCLZHHrdGKOfvqMI9lIe+IHnH9ehDPN0BZUPRNTLYG70n545iKZ1O67Prc6KEvl8vFMyZ4a/KNfiGxcTFh2Ld+Nobnv7cin9w4wxomH8OcuIbUY=
+  file: "*.rpm"
+  draft: true
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
