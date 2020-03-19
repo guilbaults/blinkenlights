@@ -41,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 
 %changelog
-* Mon 9 Mar 2020 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.5-1
+* Mon Mar 9 2020 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.5-1
 - Using python 3.4 due to a dependency on sasutil
 * Tue Jul 16 2019 Simon Guilbault <simon.guilbault@calculquebec.ca> 0.0.4-1
 - Support slots above 99 in the 106 slots JBOD
